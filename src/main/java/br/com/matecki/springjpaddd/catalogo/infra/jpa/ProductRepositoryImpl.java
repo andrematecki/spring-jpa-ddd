@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @Repository
@@ -26,15 +25,13 @@ public class ProductRepositoryImpl
 
     @Override
     protected Specification<Product> getSpecification(QueryBase query) {
-        return new Specification<Product>() {
-            @Override
-            public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+        return
+            (Root<Product> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) ->
+            {
                 ProductQuery pq = (ProductQuery) query;
-
                 if (pq.getName() != null && pq.getName() != "")
                     return criteriaBuilder.like(root.get("id"), "%" + pq.getName()+ "%");
                 return null;
-            }
-        };
+            };
     }
 }
