@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-@Repository
+@Repository("ProductRepositoryImplJPA")
 public class ProductRepositoryImpl
         extends BaseRepositoryImpl<Product, String>
         implements ProductRepository {

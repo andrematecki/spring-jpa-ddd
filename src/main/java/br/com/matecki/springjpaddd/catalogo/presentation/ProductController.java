@@ -3,6 +3,7 @@ package br.com.matecki.springjpaddd.catalogo.presentation;
 import br.com.matecki.springjpaddd.catalogo.domain.Product;
 import br.com.matecki.springjpaddd.catalogo.domain.ProductQuery;
 import br.com.matecki.springjpaddd.catalogo.domain.ProductRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class ProductController {
 
     private final ProductRepository repository;
 
-    public ProductController(ProductRepository repository) {
+    public ProductController(@Qualifier("ProductRepositoryImplEM") ProductRepository repository) {
         this.repository = repository;
     }
 
