@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -17,10 +18,11 @@ public class ProductController {
 
     private final ProductRepository repository;
 
-    public ProductController(@Qualifier("ProductRepositoryImplEM") ProductRepository repository) {
+    public ProductController(@Qualifier("ProductRepositoryImplEMManaged") ProductRepository repository) {
         this.repository = repository;
     }
 
+    @Transactional
     @GetMapping
     public Collection<ProductDto> index() {
         Product laptop = new Product("MacBook Pro", "MacBook Pro 14 inch MID 2019");
