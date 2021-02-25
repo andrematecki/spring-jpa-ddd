@@ -1,4 +1,4 @@
-package br.com.matecki.springjpaddd.shared.domain;
+package br.com.matecki.springjpaddd.shared.domainobjects;
 
 import javax.persistence.MappedSuperclass;
 

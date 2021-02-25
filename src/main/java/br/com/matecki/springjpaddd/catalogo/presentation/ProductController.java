@@ -13,12 +13,12 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api_v1/products")
+@RequestMapping("/em_app_managed/products")
 public class ProductController {
 
     private final ProductRepository repository;
 
-    public ProductController(@Qualifier("ProductRepositoryImplEMManaged") ProductRepository repository) {
+    public ProductController(@Qualifier("ProductRepositorySpringJPA") ProductRepository repository) {
         this.repository = repository;
     }
 
